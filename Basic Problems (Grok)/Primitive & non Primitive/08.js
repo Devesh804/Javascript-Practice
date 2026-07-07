@@ -15,7 +15,8 @@ console.log(a); // Output: 5  ← a is NOT affected
 // When you do let b = a, JavaScript creates a new copy of 5 and gives it to b.
 // Changing b does not affect a.
 
-// Think of it like giving someone a photocopy of your document. If they write on their copy, your original remains the same.
+// Think of it like giving someone a photocopy of your document. 
+// If they write on their copy, your original remains the same.
 
 
 
@@ -33,4 +34,5 @@ console.log(arr1);   // Output: [1, 2, 3]  ← arr1 also changed!
 // So both arr1 and arr2 are pointing to the exact same box in memory.
 // When you do arr2.push(3), you are modifying that shared box, so arr1 also sees the change.
 
-// Think of it like giving someone the original key to your house. If they add furniture, you will also see it when you go home.
+// Think of it like giving someone the original key to your house. 
+// If they add furniture, you will also see it when you go home.

@@ -18,4 +18,5 @@ console.log(fruits);
 //shift() removes the first element and returns it.
 // It changes the original array and reduces its length by 1
 
-//slice(1) returns a new array starting from index 1, so the first element is “removed” only in the copy.
+//slice(1) returns a new array starting from index 1, 
+// so the first element is “removed” only in the copy.

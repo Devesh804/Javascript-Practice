@@ -6,4 +6,4 @@ let evens = nums.filter(function(num){
     return num%2 === 0;
 });
 
-console.log(evens);
+console.log(evens);  

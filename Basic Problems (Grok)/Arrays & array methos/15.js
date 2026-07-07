@@ -6,4 +6,4 @@ let fruits = [ "apple", "banana", "mango" ]
 fruits.forEach(function(fruit) {
     console.log(fruit);
     
-})
+}) 

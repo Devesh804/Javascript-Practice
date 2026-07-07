@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Call App</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Remix Icons -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+        rel="stylesheet"
+    />
+</head>
+
+<body>
+
+
+    <!-- FORM -->
+
+    <div class="form-container">
+
+        <h2>New Call</h2>
+
+        <form>
+
+            <label>Image URL</label>
+            <input required type="text" placeholder="https://example.com/photo.jpg">
+
+            <label>Full Name</label>
+            <input required type="text" placeholder="Enter full name">
+
+            <label>Home Town</label>
+            <input required type="text" placeholder="Enter home town">
+
+            <label>Purpose</label>
+            <input required type="text" placeholder="e.g., Quick appointment note">
+
+            <label>Category</label>
+
+            <div class="category">
+
+                <label class="tag-checkbox">
+                    <input required type="radio" name="category">
+                    <span>Emergency</span>
+                </label>
+
+                <label class="tag-checkbox">
+                    <input required type="radio" name="category">
+                    <span>Important</span>
+                </label>
+
+                <label class="tag-checkbox">
+                    <input required type="radio" name="category">
+                    <span>Urgent</span>
+                </label>
+
+                <label class="tag-checkbox">
+                    <input required type="radio" name="category">
+                    <span>No Rush</span>
+                </label>
+
+            </div>
+
+            <button class="submit-btn">Create Note</button>
+
+        </form>
+
+        <button class="closeForm">Close</button>
+
+    </div>
+
+    <!-- MAIN -->
+
+    <div class="main">
+
+        <!-- LEFT ICONS -->
+
+        <div class="left-icons">
+
+            <button id="Addnote">
+                <i class="ri-add-line"></i>
+            </button>
+
+            <button>
+                <i class="ri-arrow-up-line"></i>
+            </button>
+
+            <button>
+                <i class="ri-arrow-down-line"></i>
+            </button>
+
+        </div>
+
+        <!-- CARD -->
+
+        <div class="note-container">
+
+            <div class="card">
+
+                <div class="profile">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=400"
+                        alt=""
+                    >
+
+                    <h2>Fatima Uma</h2>
+
+                </div>
+
+                <div class="details">
+
+                    <div>
+                        <p>Home town</p>
+                        <h4>Singapore</h4>
+                    </div>
+
+                    <div>
+                        <p>Bookings</p>
+                        <h4>3 times</h4>
+                    </div>
+
+                </div>
+
+                <div class="card-buttons">
+
+                    <button class="call-btn">
+                        <i class="ri-phone-line"></i>
+                        Call
+                    </button>
+
+                    <button class="msg-btn">
+                        Message
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- RIGHT COLORS -->
+
+        <div class="right-colors">
+
+            <div class="color black"></div>
+            <div class="color purple"></div>
+            <div class="color orange"></div>
+            <div class="color green"></div>
+
+        </div>
+
+    </div>
+<script src="script.js"></script>
+</body>
+</html>
