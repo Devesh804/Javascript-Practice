@@ -12,6 +12,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    scrollbar-gutter: stable;
 }
 
 .main{
@@ -220,6 +221,15 @@ form input[type="text"]{
     margin-bottom: 25px;
 }
 
+/* 
+.category{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+
 .tag-checkbox{
     position: relative;
 }
@@ -255,7 +265,7 @@ form input[type="text"]{
 .tag-checkbox:nth-child(4) span{
     border-color: gray;
     color: gray;
-}
+} */
 
 .submit-btn{
     width: 100%;
