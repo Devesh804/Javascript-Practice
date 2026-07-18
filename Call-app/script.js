@@ -1,9 +1,9 @@
 // All variables and Doc Selection
 
-const tasks = [];
+const { useLayoutEffect } = require("react");
 
 let addNote = document.querySelector("#Addnote");
-let formcontainer = document.querySelector(".form-container");
+let formcontainer = document.querySelector('.formcontainer');
 let closeForm = document.querySelector(".closeForm")
 let main = document.querySelector(".main")
 
@@ -31,8 +31,20 @@ const submitButton = form.querySelector(".submit-btn")
 
 // Code Starts Here
 
-function saveToLocalStorage(arr) {
-    
+function saveToLocalStorage(obj) {
+    // purane localstorage nikalo
+    if(localStorage.getItem("tasks") === null) {
+        let oldTasks = [];
+        oldTasks.push(obj);
+        localStorage.setItem("tasks", JSON.stringify(oldTasks));
+        
+    } else {
+        let oldTasks = localStorage.getItem("tasks");
+        oldTasks = JSON.parse(oldTasks);
+        oldTasks.push(obj);
+        localStorage.setItem("tasks", JSON.stringify(oldTasks));
+    }
+
 }
 
 addNote.addEventListener("click", function () {
@@ -79,4 +91,11 @@ form.addEventListener("submit", function(evt){
         return;
     }
 
+    saveToLocalStorage({
+        imageUrl,
+        fullName,
+        homeTown,
+        purpose,
+        selected,
+    })
 });
