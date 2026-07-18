@@ -174,7 +174,7 @@ body{
 
 /* FORM */
 
-.form-container{
+.formcontainer{
     width: 420px;
     background-color: white;
     padding: 28px;
@@ -189,7 +189,7 @@ body{
     display: none;
 }
 
-.form-container h2{
+.formcontainer h2{
     margin-bottom: 20px;
 }
 

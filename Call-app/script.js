@@ -1,11 +1,14 @@
 // All variables and Doc Selection
 
-const { useLayoutEffect } = require("react");
+// const { useLayoutEffect } = require("react");
+
+const tasks = [];
 
 let addNote = document.querySelector("#Addnote");
 let formcontainer = document.querySelector('.formcontainer');
 let closeForm = document.querySelector(".closeForm")
 let main = document.querySelector(".main")
+let createnote = document.querySelector("#submit-btn")
 
 const form = document.querySelector("form");
 
@@ -14,11 +17,11 @@ const imageUrlInput = form.querySelector(
 );
 
 const fullNameInput = form.querySelector(
-    "input[placeholder='Enter Full name']"
+    "input[placeholder='Enter full name']"
 );
 
 const homeTownInput = form.querySelector(
-    "input[placeholder='Enter Home Town']"
+    "input[placeholder='Enter home town']"
 );
 
 const purposeInput = form.querySelector(
@@ -36,8 +39,7 @@ function saveToLocalStorage(obj) {
     if(localStorage.getItem("tasks") === null) {
         let oldTasks = [];
         oldTasks.push(obj);
-        localStorage.setItem("tasks", JSON.stringify(oldTasks));
-        
+        localStorage.setItem("tasks", JSON.stringify(oldTasks)); 
     } else {
         let oldTasks = localStorage.getItem("tasks");
         oldTasks = JSON.parse(oldTasks);
@@ -57,7 +59,10 @@ closeForm.addEventListener("click", function(){
     main.style.display = "flex";
 });
 
-
+createnote.addEventListener("click", function() {
+    formcontainer.style.display = "none";
+    main.style.display = "flex";
+});
 
 form.addEventListener("submit", function(evt){
     evt.preventDefault();
@@ -65,7 +70,10 @@ form.addEventListener("submit", function(evt){
     const fullName = fullNameInput.value.trim();
     const homeTown = homeTownInput.value.trim();
     const purpose = purposeInput.value.trim();
-    
+    const categorySelected = document.querySelector(
+    "input[name='category']:checked"
+);
+
     if (imageUrl === "") {
         alert("Please enter an Image URL.");
         return;
@@ -96,6 +104,79 @@ form.addEventListener("submit", function(evt){
         fullName,
         homeTown,
         purpose,
-        selected,
+        categorySelected
     })
+
+    form.reset();
 });
+
+function showCards() {
+   let allTasks = JSON.parse(localStorage.getItem("tasks"));
+
+   allTasks.forEach(function(task) {
+    // Card
+const card = document.createElement("div");
+card.className = "card";
+
+// Profile
+const profile = document.createElement("div");
+profile.className = "profile";
+
+const img = document.createElement("img");
+img.src = task.imageUrl;
+img.alt = "";
+
+const name = document.createElement("h2");
+name.textContent = task.fullName;
+
+profile.append(img, name);
+
+// Details
+const details = document.createElement("div");
+details.className = "details";
+
+// Home Town
+const homeDiv = document.createElement("div");
+
+const homeP = document.createElement("p");
+homeP.textContent = "HomeTown";
+
+const homeH4 = document.createElement("h4");
+homeH4.textContent = task.homeTown;
+
+homeDiv.append(homeP, homeH4);
+
+// Bookings
+const bookingDiv = document.createElement("div");
+
+const bookingP = document.createElement("p");
+bookingP.textContent = "Purpose";
+
+const bookingH4 = document.createElement("h4");
+bookingH4.textContent = task.purpose;
+
+bookingDiv.append(bookingP, bookingH4);
+
+details.append(homeDiv, bookingDiv);
+
+// Buttons
+const cardButtons = document.createElement("div");
+cardButtons.className = "card-buttons";
+
+const callBtn = document.createElement("button");
+callBtn.className = "call-btn";
+callBtn.innerHTML = `<i class="ri-phone-line"></i> Call`;
+
+const msgBtn = document.createElement("button");
+msgBtn.className = "msg-btn";
+msgBtn.textContent = "Message";
+
+cardButtons.append(callBtn, msgBtn);
+
+// Assemble Card
+card.append(profile, details, cardButtons);
+
+// Append to container
+document.querySelector(".main").appendChild(card);
+   })
+}
