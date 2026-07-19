@@ -1,5 +1,7 @@
 // All variables and Doc Selection
 
+// const { captureOwnerStack } = require("react");
+
 // const { useLayoutEffect } = require("react");
 
 const tasks = [];
@@ -8,7 +10,12 @@ let addNote = document.querySelector("#Addnote");
 let formcontainer = document.querySelector('.formcontainer');
 let closeForm = document.querySelector(".closeForm")
 let main = document.querySelector(".main")
-let createnote = document.querySelector("#submit-btn")
+let createnote = document.querySelector(".submit-btn")
+
+const notecontainer = document.querySelector(".note-container");
+const upBtn = document.querySelector(".ri-arrow-up-line");
+const downBtn = document.querySelector(".ri-arrow-down-line");
+
 
 const form = document.querySelector("form");
 
@@ -64,6 +71,8 @@ createnote.addEventListener("click", function() {
     main.style.display = "flex";
 });
 
+
+
 form.addEventListener("submit", function(evt){
     evt.preventDefault();
     const imageUrl = imageUrlInput.value.trim();
@@ -108,12 +117,16 @@ form.addEventListener("submit", function(evt){
     })
 
     form.reset();
+    notecontainer.innerHTML = "";
+    showCards();
+    updateStack();
 });
 
 function showCards() {
-   let allTasks = JSON.parse(localStorage.getItem("tasks"));
 
-   allTasks.forEach(function(task) {
+   let allTasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+   allTasks.forEach(function(task, i) {
     // Card
 const card = document.createElement("div");
 card.className = "card";
@@ -177,6 +190,42 @@ cardButtons.append(callBtn, msgBtn);
 card.append(profile, details, cardButtons);
 
 // Append to container
-document.querySelector(".main").appendChild(card);
+document.querySelector(".note-container").appendChild(card);
    })
 }
+
+showCards();  
+
+function updateStack() {
+    const cards = document.querySelectorAll(".note-container .card");
+
+    for (let i = 0; i < cards.length; i++){
+
+        cards.forEach(function(card, i){
+            card.style.zIndex = cards.length - i;
+            card.style.transform = `translateY(${index * 25}px) scale(${1-index*0.03})`;
+            card.style.opacity = `${1 - i * 0.02}`; 
+        });
+    }
+}
+// showCards();
+
+upBtn.addEventListener("click", function(){
+    let lastchild = notecontainer.lastElementChild;
+    if (lastchild) {
+        notecontainer.insertBefore(lastchild, notecontainer.firstElementChild);
+        // update
+        updateStack();
+    }
+
+});
+
+downBtn.addEventListener("click", function(){
+    const firstChild = notecontainer.firstElementChild;
+    if (firstChild) {
+        notecontainer.appendChild(firstChild);
+        // update
+        updateStack();
+    }
+
+});

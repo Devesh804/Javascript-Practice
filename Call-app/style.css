@@ -50,15 +50,27 @@ body{
 
 .note-container{
     position: relative;
+    width: 350px;
+    height: 250px; 
+    overflow: visible;
+
 }
 
 .card{
+    position: absolute;
+    top: 0;
+    left: 0;
+
     width: 350px;
-    background-color: white;
+
     border-radius: 20px;
     padding: 22px;
-    box-shadow: 0 12px 20px rgba(0,0,0,0.08);
-    position: relative;
+    transform-origin: top center;
+
+
+    background: white;
+
+    transition: all .35s ease;
 }
 
 .card::before{
