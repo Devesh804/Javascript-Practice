@@ -7,6 +7,10 @@ class User {
         this.role = "user";
     }
 
+    checkRole() {
+        return `you are a ${this.role}`;
+    }
+
     write(text) {
         let h1 = document.createElement("h1");
         h1.textContent = `${this.name} : ${text}`;
